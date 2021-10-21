@@ -9,6 +9,7 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <Grid>
                 <StackLayout>
@@ -36,5 +37,6 @@
                 </StackLayout>
             </Grid>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
