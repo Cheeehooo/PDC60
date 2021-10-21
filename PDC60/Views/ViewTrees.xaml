@@ -19,17 +19,17 @@
                         <pan:PancakeView BackgroundColor="White" Padding="0" Margin="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" CornerRadius="30,0,30,0">
 
                             <StackLayout Margin="10">
-                                <Label Text="{Binding Id}" TextColor="DarkGreen" FontSize="21" FontAttributes="Bold"/>
-                                <Label Text="{Binding Name}" TextColor="DarkGreen" FontSize="18" />
-                                <Label Text="{Binding TreeCode}" TextColor="DarkGreen" FontSize="18" />
-                                <Label Text="{Binding Identification}" TextColor="DarkGreen" FontSize="18" />
-                                <Label Text="{Binding Notes}" TextColor="DarkGreen" FontSize="18" />
-                                <Label Text="{Binding GPSCoordinates}" TextColor="DarkGreen" FontSize="18" />
-                                <Label Text="{Binding Landmark}" TextColor="DarkGreen" FontSize="18" />
-                                <Label Text="{Binding TrunkFlare}" TextColor="DarkGreen" FontSize="18" />
-                                <Label Text="{Binding Height}" TextColor="DarkGreen" FontSize="18" />
-                                <Label Text="{Binding SurfaceRoots}" TextColor="DarkGreen" FontSize="18" />
-                                <Label Text="{Binding Canopy}" TextColor="DarkGreen" FontSize="18" />
+                                <Label Text="{Binding Id}"              TextColor="DarkGreen" FontSize="21" FontAttributes="Bold"/>
+                                <Label Text="{Binding Name}"            TextColor="DarkGreen" FontSize="18" />
+                                <Label Text="{Binding TreeCode}"        TextColor="DarkGreen" FontSize="18" />
+                                <Label Text="{Binding Identification}"  TextColor="DarkGreen" FontSize="18" />
+                                <Label Text="{Binding Notes}"           TextColor="DarkGreen" FontSize="18" />
+                                <Label Text="{Binding GPSCoordinates}"  TextColor="DarkGreen" FontSize="18" />
+                                <Label Text="{Binding Landmark}"        TextColor="DarkGreen" FontSize="18" />
+                                <Label Text="{Binding TrunkFlare}"      TextColor="DarkGreen" FontSize="18" />
+                                <Label Text="{Binding Height}"          TextColor="DarkGreen" FontSize="18" />
+                                <Label Text="{Binding SurfaceRoots}"    TextColor="DarkGreen" FontSize="18" />
+                                <Label Text="{Binding Canopy}"          TextColor="DarkGreen" FontSize="18" />
                             </StackLayout>
                         </pan:PancakeView>
                     </StackLayout>
