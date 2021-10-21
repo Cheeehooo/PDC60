@@ -16,6 +16,15 @@ namespace PDC60.Views
         {
             InitializeComponent();
         }
+        //public async void OnItemSelected(object sender, ItemTappedEventArgs args)
+        //{
+        //    var trees = args.Item as Tree;
+        //    if (trees == null) return;
+
+        //    await Navigation.PushAsync(new DetailsPage(trees));
+        //    lstTrees.SelectedItem = null;
+
+        //}
         private async void btnAddTree_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddTree());

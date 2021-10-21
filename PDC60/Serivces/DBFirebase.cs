@@ -10,13 +10,11 @@ using System.Linq;
 
 namespace PDC60.Serivces
 {
-    //Like I said, di man lahat ng parameters andito. Hehe!
     public class DBFirebase
     {
         FirebaseClient client;
         public DBFirebase()
         {
-            //Lagay mo yung sayo. HAHAHAHHA!
             client = new FirebaseClient("");
         }
 
@@ -30,7 +28,8 @@ namespace PDC60.Serivces
             return TreeData;
         }
         public async Task AddTree(int Id, string Name, string TreeCode, string Identification, string Notes,
-                                  string Landmark, string TrunkFlare, double Height, double DMB, string SurfaceRoots, string Canopy)
+                                  string Landmark, string TrunkFlare, string Height, string SurfaceRoots, string Canopy,
+                                  string GPSCoordinates)
         {
             Tree em = new Tree()
             {
@@ -42,45 +41,47 @@ namespace PDC60.Serivces
                 Landmark = Landmark,
                 TrunkFlare = TrunkFlare,
                 Height = Height,
-                DMB = DMB,
                 SurfaceRoots = SurfaceRoots,
-                Canopy = Canopy
+                Canopy = Canopy,
+                GPSCoordinates = GPSCoordinates
             };
             await client
                 .Child("Tree")
                 .PostAsync(em);
         }
-        public async Task DeleteTree(int Id, string Name, string TreeCode, string Identification, string Notes,
-                                     string Landmark, string TrunkFlare, double Height, double DMB, string SurfaceRoots, string Canopy)
+        public async Task DeleteTree(int Id, string name, string treeCode, string Identification, string Notes,
+                                     string Landmark, string TrunkFlare, string Height, string SurfaceRoots, string Canopy,
+                                     string gpsCoordinates)
         {
             var toDeleteTree = (await client
                 .Child("Tree")
                 .OnceAsync<Tree>()).FirstOrDefault
-                (a => a.Object.name == Name || a.Object.treecode == TreeCode);
+                (a => a.Object.Name == name || a.Object.TreeCode == treeCode);
 
             await client.Child("Tree").Child(toDeleteTree.Key).DeleteAsync();
         }
-        public async Task UpdateTree(int Id, string Name, string TreeCode, string Identification, string Notes,
-                                     string Landmark, string TrunkFlare, double Height, double DMB, string SurfaceRoots, string Canopy)
+        public async Task UpdateTree(int Id, string name, string treeCode, string Identification, string Notes,
+                                     string Landmark, string TrunkFlare, string Height, string SurfaceRoots, string Canopy,
+                                     string gpsCoordinates)
         {
             var toUpdateTree = (await client
                 .Child("Tree")
                 .OnceAsync<Tree>()).FirstOrDefault
-                (a => a.Object.name == Name);
+                (a => a.Object.Name == name);
 
             Tree t = new Tree()
             {
                 Id = Id,
-                Name = Name,
-                TreeCode = TreeCode,
+                Name = name,
+                TreeCode = treeCode,
                 Identification = Identification,
                 Notes = Notes,
                 Landmark = Landmark,
                 TrunkFlare = TrunkFlare,
                 Height = Height,
-                DMB = DMB,
                 SurfaceRoots = SurfaceRoots,
-                Canopy = Canopy
+                Canopy = Canopy,
+                GPSCoordinates = gpsCoordinates
             };
             await client
                 .Child("Tree")

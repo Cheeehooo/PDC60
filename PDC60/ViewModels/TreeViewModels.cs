@@ -19,10 +19,10 @@ namespace PDC60.ViewModels
         public string TreeCode { get; set; }
         public string Identification { get; set; }
         public string Notes { get; set; }
+        public string GPSCoordinates { get; set; }
         public string Landmark { get; set; }
         public string TrunkFlare { get; set; }
-        public double Height { get; set; }
-        public double DMB { get; set; }
+        public string Height { get; set; }
         public string SurfaceRoots { get; set; }
         public string Canopy { get; set; }
 
@@ -47,13 +47,14 @@ namespace PDC60.ViewModels
             services = new DBFirebase();
             Trees = services.getTree();
             AddTree = new Command(async () => await addTreeAsync
-            (Id, Name, TreeCode, Identification, Notes, Landmark, TrunkFlare, Height, DMB, SurfaceRoots, Canopy));
+            (Id, Name, TreeCode, Identification, Notes, Landmark, TrunkFlare, Height, SurfaceRoots, Canopy, GPSCoordinates));
         }
 
         public async Task addTreeAsync(int Id, string Name, string TreeCode, string Identification, string Notes,
-                                       string Landmark, string TrunkFlare, double Height, double DMB, string SurfaceRoots, string Canopy)
+                                       string Landmark, string TrunkFlare, string Height, string SurfaceRoots, string Canopy,
+                                       string GPSCoordinates)
         {
-            await services.AddTree(Id, Name, TreeCode, Identification, Notes, Landmark, TrunkFlare, Height, DMB, SurfaceRoots, Canopy);
+            await services.AddTree(Id, Name, TreeCode, Identification, Notes, Landmark, TrunkFlare, Height, SurfaceRoots, Canopy, GPSCoordinates);
         }
     }
 }

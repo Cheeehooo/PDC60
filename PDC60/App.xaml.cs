@@ -10,7 +10,7 @@ namespace PDC60
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Views.ViewTrees());
         }
 
         protected override void OnStart()

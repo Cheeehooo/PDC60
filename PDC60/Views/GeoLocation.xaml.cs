@@ -1,5 +1,4 @@
-﻿using PDC60.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -13,19 +12,18 @@ using Xamarin.Forms.Xaml;
 namespace PDC60.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddTree : ContentPage
+    public partial class GeoLocation : ContentPage
     {
-        public AddTree()
+        public GeoLocation()
         {
             InitializeComponent();
             GetAddress = new Command(async () => await OnGetAddress());
             GetLocation = new Command(async () => await OnGetPosition());
-            BindingContext = new TreeViewModels();
+            BindingContext = this;
         }
-
         string lat = "47.673988";
         string lon = "-122.121513";
-        string gloc = "Microsoft Building 25 Redmond WA USA";
+        string Glocation = "227b MacArthur Hwy, Angeles, Pampanga, Philippines";
         string geocodeAddress;
         string geocodeLocation;
 
@@ -51,10 +49,10 @@ namespace PDC60.Views
             set => SetProperty(ref geocodeAddress, value);
         }
 
-        public string Glocation
+        public string Location
         {
-            get => gloc;
-            set => SetProperty(ref gloc, value);
+            get => Glocation;
+            set => SetProperty(ref Glocation, value);
         }
 
         public string GeocodeLocation
@@ -72,8 +70,8 @@ namespace PDC60.Views
             try
             {
 
-                var locations = await Geocoding.GetLocationsAsync(Glocation);
-                Location location = locations.FirstOrDefault();
+                var loc = await Geocoding.GetLocationsAsync(Glocation);
+                Location location = loc.FirstOrDefault();
                 if (location == null)
                 {
                     GeocodeLocation = "Unable to detect locations";
@@ -150,13 +148,6 @@ namespace PDC60.Views
             OnPropertyChanged(propertyName);
             return true;
         }
-
-        private async void ToView(object sender, EventArgs e)
-        {
-            await DisplayAlert("Success", "Tree Details Added", "Ok");
-            await Navigation.PushAsync(new ViewTrees());
-        }
-
         bool isGettingLocation;
         async void Button_Clicked(System.Object sender, System.EventArgs e)
         {
@@ -164,10 +155,11 @@ namespace PDC60.Views
             while (isGettingLocation)
             {
                 var result = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromMinutes(1)));
-                resultLocation.Text = $"lat: {result.Latitude}, lng: {result.Longitude}{Environment.NewLine}";
+                RLocation.Text = $"lat: {result.Latitude}, lng: {result.Longitude}{Environment.NewLine}";
                 await Task.Delay(1000);
             }
         }
+
         private void Button_Stop(System.Object sender, System.EventArgs e)
         {
             isGettingLocation = false;
