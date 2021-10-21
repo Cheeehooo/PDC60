@@ -27,6 +27,12 @@ namespace PDC60.Serivces
 
             return TreeData;
         }
+
+        internal Task DeleteTree(int v, object text1, object text2, object text3, object text4, object text5, object text6, object text7, object text8, object text9, object text10, object text11)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task AddTree(int Id, string Name, string TreeCode, string Identification, string Notes,
                                   string Landmark, string TrunkFlare, string Height, string SurfaceRoots, string Canopy,
                                   string GPSCoordinates)
